@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unifit-config
+data:
+  DB_URL: jdbc:mysql://mysql:3306/app_academy
+  KC_ISSUER_URI: http://keycloak:8080/realms/unifit
+  KC_REALM: unifit
+  KC_CLIENT_ID: unifit
+  BASE_URL: http://localhost:8080
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: unifit-secret
+type: Opaque
+stringData:
+  DB_USER: root
+  DB_PASSWORD: "root"
+  KC_CLIENT_SECRET: 
+  KC_ADMIN_PASSWORD: "admin"
