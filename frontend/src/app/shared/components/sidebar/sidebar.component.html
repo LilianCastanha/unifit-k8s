@@ -1,0 +1,75 @@
+<aside [className]="sidebarWrapperClasses">
+  <div class="mt-8">
+    <img src="/assets/logo.png" class="w-32 h-32" />
+  </div>
+
+  <nav class="flex-1 w-full">
+    <ul class="flex flex-col w-full gap-2">
+      <!-- <li>
+        <a
+          (click)="handleLinkClick()"
+          routerLink="/app"
+          routerLinkActive="!bg-gray-100"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center gap-4 px-4 py-2 text-sm transition-colors duration-200 border rounded-md cursor-pointer hover:bg-gray-50"
+        >
+          <i
+            class="flex items-center justify-center text-lg pi pi-th-large"
+          ></i>
+          Home
+        </a>
+      </li> -->
+
+      <li>
+        <a
+          (click)="handleLinkClick()"
+          routerLink="/app"
+          routerLinkActive="!bg-gray-100"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center gap-4 px-4 py-2 text-sm transition-colors duration-200 border rounded-md cursor-pointer hover:bg-gray-50"
+        >
+          <i class="flex items-center justify-center text-lg pi pi-list"></i>
+          Treinos
+        </a>
+      </li>
+
+      <li>
+        <a
+          (click)="handleLinkClick()"
+          routerLink="/app/profile"
+          routerLinkActive="!bg-gray-100"
+          class="flex items-center gap-4 px-4 py-2 text-sm transition-colors duration-200 border rounded-md cursor-pointer hover:bg-gray-50"
+        >
+          <i class="flex items-center justify-center text-lg pi pi-user"></i>
+          Perfil
+        </a>
+      </li>
+
+      <li *ngIf="isUserAdmin">
+        <a
+          (click)="handleLinkClick()"
+          routerLink="/app/admin/users"
+          routerLinkActive="!bg-gray-100"
+          class="flex items-center gap-4 px-4 py-2 text-sm transition-colors duration-200 border rounded-md cursor-pointer hover:bg-gray-50"
+        >
+          <i class="flex items-center justify-center text-lg pi pi-lock"></i>
+          Users
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <button
+    (click)="handleLogout()"
+    class="flex items-center justify-between w-full gap-4 px-4 py-2 text-sm transition-colors duration-200 border !rounded-md hover:bg-gray-100"
+  >
+    <div class="flex flex-col min-w-0 text-left">
+      <span class="text-sm font-semibold truncate text-zinc-700">
+        {{ user?.name }}
+      </span>
+      <span class="text-xs truncate text-zinc-500">{{ user?.email }}</span>
+    </div>
+
+    <i class="flex items-center justify-center shrink-0 pi pi-sign-out"></i>
+  </button>
+</aside>

@@ -1,0 +1,79 @@
+<div class="overflow-hidden bg-white border rounded-md">
+  <table class="min-w-full table-auto">
+    <thead class="bg-gray-50">
+      <tr>
+        <th
+          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+        >
+          Id
+        </th>
+        <th
+          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+        >
+          Nome
+        </th>
+        <th
+          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+        >
+          Email
+        </th>
+        <th
+          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+        >
+          Cargo
+        </th>
+        <th
+          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+        >
+          Ações
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr *ngFor="let user of users" class="hover:bg-gray-50">
+        <td
+          class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ user.id }}
+        </td>
+        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+          {{ user.name || '-' }}
+        </td>
+        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+          <a
+            [href]="'mailto:' + user.email"
+            target="_blank"
+            class="text-blue-600 hover:text-blue-900"
+          >
+            {{ user.email }}
+          </a>
+        </td>
+        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+          <span
+            class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full"
+            [ngClass]="{
+              'bg-green-100 text-green-800': user.roles.includes(
+                UserRole.Admin
+              ),
+              'bg-blue-100 text-blue-800': user.roles.includes(
+                UserRole.Colaborador
+              ),
+            }"
+          >
+            {{ getRoleDisplay(user.roles) }}
+          </span>
+        </td>
+        <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
+          <button
+            (click)="handleDeleteUser(user.id)"
+            *ngIf="user.id !== currentUserId"
+            class="flex items-center justify-center p-1 text-red-500 transition-colors duration-200 hover:text-red-600"
+          >
+            <span class="pi pi-trash"></span>
+            <span class="sr-only">Deletar usuário</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

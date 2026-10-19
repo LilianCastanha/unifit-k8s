@@ -1,0 +1,23 @@
+@import 'ngx-toastr/toastr';
+@import 'primeicons/primeicons.css';
+@import '../node_modules/tailwindcss/base.css' layer(tailwindcss);
+@import '../node_modules/tailwindcss/components.css' layer(tailwindcss);
+@import '../node_modules/tailwindcss/utilities.css' layer(tailwindcss);
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+
+:root {
+  font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-ngx-toastr {
+  box-shadow: none !important;
+  font-size: 0.875rem !important;
+}

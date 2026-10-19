@@ -1,0 +1,76 @@
+<main>
+  <div class="flex flex-wrap justify-between gap-2 mb-4">
+    <div class="flex flex-col gap-2">
+      <app-title title="Seus Treinos" />
+      <app-subtitle
+        subtitle="Aqui você pode visualizar e adicionar novos treinos"
+      />
+    </div>
+    <p-button
+      label="Adicionar Treino"
+      size="small"
+      icon="pi pi-plus"
+      iconPos="right"
+      (click)="showCreateWorkoutDialog()"
+    >
+    </p-button>
+  </div>
+
+  <app-workout-list [workouts]="workouts"></app-workout-list>
+
+  <p-dialog
+    header="Adicionar Novo Treino"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '30rem' }"
+    draggable="false"
+  >
+    <span class="block mb-4 text-gray-600"
+      >Preencha as informações do treino.</span
+    >
+
+    <div class="space-y-4">
+      <div class="flex items-center">
+        <label for="name" class="w-full font-semibold">Nome</label>
+        <input
+          type="text"
+          pInputText
+          id="name"
+          autocomplete="off"
+          [(ngModel)]="newWorkoutForm.planName"
+        />
+      </div>
+
+      <div class="flex items-center">
+        <label for="description" class="w-full font-semibold">Descrição</label>
+        <input
+          type="text"
+          id="description"
+          pInputText
+          autocomplete="off"
+          [(ngModel)]="newWorkoutForm.planDescription"
+        />
+      </div>
+
+      <div class="flex items-center">
+        <label for="duration" class="w-full font-semibold">Duração (min)</label>
+        <p-inputNumber
+          id="duration"
+          mode="decimal"
+          [min]="0"
+          [(ngModel)]="newWorkoutForm.duration"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-2 mt-4">
+      <p-button
+        label="Cancelar"
+        severity="secondary"
+        (click)="hideCreateWorkoutDialog()"
+      ></p-button>
+      <p-button label="Adicionar" (click)="saveWorkout()"></p-button>
+    </div>
+  </p-dialog>
+</main>
